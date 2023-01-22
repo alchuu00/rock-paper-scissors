@@ -16,16 +16,20 @@ function playRound(playerSelection, computerSelection) {
     else if ((playerSelection === "rock" && computerSelection === "paper") || (playerSelection === "paper" && computerSelection === "scissors") || (playerSelection === "scissors" && computerSelection === "rock")) {
         return "You lose";
     }
-    else if ((playerSelection === "rock" && computerSelection === "scissors") || (playerSelection === "paper" && computerSelection === "rock") || (playerSelection === "scissors" && computerSelection === "paper")){
+    else if ((playerSelection === "rock" && computerSelection === "scissors") || (playerSelection === "paper" && computerSelection === "rock") || (playerSelection === "scissors" && computerSelection === "paper")) {
+        score++;
         return "You win";
     }
 }
 
 function game() {
-    for (let i = 0; i < 5; i++)
-    
+    for (let i = 0; i < 5; i++) {
+        const playerSelection = getPlayerChoice();
+        const computerSelection = getComputerChoice();
+        alert(playRound(playerSelection, computerSelection));
+        alert("Score: " + score + " Attempts left: " + (4 - i))
+    }
 }
 
-const playerSelection = getPlayerChoice();
-const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection));
+let score = 0
+game()
