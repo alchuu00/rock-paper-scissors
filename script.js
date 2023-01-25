@@ -4,9 +4,15 @@ function getComputerChoice() {
     return computerChoice;
 }
 
+let playerChoice
 function getPlayerChoice() {
-    const playerChoice = prompt("Input your move (rock, paper or scissors)!").toLowerCase();
-    return playerChoice;
+    const elements = document.querySelectorAll('button');
+    elements.forEach(element => {
+      element.addEventListener('click', function() {
+      playerChoice = this.className;
+      });
+    });
+    return playerChoice
 }
 
 function playRound(playerSelection, computerSelection) {
@@ -14,7 +20,7 @@ function playRound(playerSelection, computerSelection) {
         return "It's a Tie!";
     }
     else if ((playerSelection === "rock" && computerSelection === "paper") || (playerSelection === "paper" && computerSelection === "scissors") || (playerSelection === "scissors" && computerSelection === "rock")) {
-        computerScore++
+        computerScore++;
         return "You lose";
     }
     else if ((playerSelection === "rock" && computerSelection === "scissors") || (playerSelection === "paper" && computerSelection === "rock") || (playerSelection === "scissors" && computerSelection === "paper")) {
@@ -23,14 +29,28 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-function game() {
-    const playerSelection = getPlayerChoice();
+function game(playerSelection) {
     const computerSelection = getComputerChoice();
-    alert(playRound(playerSelection, computerSelection));
-    alert("Player: " + playerScore + " Computer: " + computerScore)
-}
+    console.log(playerSelection)
+    console.log(computerSelection)
+
+    const message = document.querySelector('.message');
+    message.textContent = playRound(playerSelection, computerSelection);
+    console.log(message)
+
+    const computerPoints = document.querySelector('.computerScore');
+    computerPoints.textContent = computerScore
+
+    const playerPoints = document.querySelector('.playerScore');
+    playerPoints.textContent = playerScore
+  }
 
 let playerScore = 0
 let computerScore = 0
 
-game()
+const elements = document.querySelectorAll('button');
+elements.forEach(element => {
+  element.addEventListener('click', function() {
+    game(this.className);
+  });
+});
