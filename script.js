@@ -14,22 +14,23 @@ function playRound(playerSelection, computerSelection) {
         return "It's a Tie!";
     }
     else if ((playerSelection === "rock" && computerSelection === "paper") || (playerSelection === "paper" && computerSelection === "scissors") || (playerSelection === "scissors" && computerSelection === "rock")) {
+        computerScore++
         return "You lose";
     }
     else if ((playerSelection === "rock" && computerSelection === "scissors") || (playerSelection === "paper" && computerSelection === "rock") || (playerSelection === "scissors" && computerSelection === "paper")) {
-        score++;
+        playerScore++;
         return "You win";
     }
 }
 
 function game() {
-    for (let i = 0; i < 5; i++) {
-        const playerSelection = getPlayerChoice();
-        const computerSelection = getComputerChoice();
-        alert(playRound(playerSelection, computerSelection));
-        alert("Score: " + score + " Attempts left: " + (4 - i))
-    }
+    const playerSelection = getPlayerChoice();
+    const computerSelection = getComputerChoice();
+    alert(playRound(playerSelection, computerSelection));
+    alert("Player: " + playerScore + " Computer: " + computerScore)
 }
 
-let score = 0
+let playerScore = 0
+let computerScore = 0
+
 game()
