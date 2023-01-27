@@ -1,9 +1,9 @@
 body {
     background-image: url();
-    background-size:cover;
+    background-size: cover;
     height: 100%;
     overflow: hidden;
-    margin:0;
+    margin: 0;
     padding: 0;
 }
 
@@ -17,7 +17,8 @@ body {
 
 /* bar top */
 /* bar bottom */
-.bar-top, .bar-bottom {
+.bar-top,
+.bar-bottom {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -25,34 +26,26 @@ body {
     gap: 4rem;
 }
 
-.person, .score{
+.container {
+    width: 428px;
+    height: 166px;
+}
+
+.person,
+.score {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items:center;
+    align-items: center;
 }
 
-.avatar-opponent {
-    background-image: url(/img/computer.png);
-    background-size:cover;
+.avatar {
     width: 9rem;
     height: 9rem;
-    border: .7rem solid #46300f;
-    border-radius: 50%;
-    background-color: #f7e3ca;
 }
 
-.avatar-player {
-    background-image: url(/img/player.png);
-    background-size:cover;
-    width: 9rem;
-    height: 9rem;
-    border: .7rem solid #46300f;
-    border-radius: 50%;
-    background-color: #f7e3ca;
-}
-
-.opponent-name, .player-name {
+.opponent-name,
+.player-name {
     background-color: #f7e3ca;
     border: .7rem solid #46300f;
     border-radius: 20px;
@@ -67,9 +60,6 @@ body {
 .score-bar {
     width: 15rem;
     height: 4rem;
-    border-radius: 20px;
-    background-color: #f7e3ca;
-    border: .7rem solid #46300f;
 }
 
 .score-circle {
@@ -82,7 +72,9 @@ body {
     justify-content: center;
     align-items: center;
 }
-.computer-score, .player-score {
+
+.computer-score,
+.player-score {
     font-size: 8rem;
 }
 
@@ -92,16 +84,53 @@ body {
     justify-content: center;
 }
 
-.player-cards, .opponent-cards {
+.player-cards,
+.opponent-cards {
     display: flex;
     gap: 1.5rem;
 }
 
-.card:hover {
+.player-card {
+    
+}
+
+.player-card:hover {
     transform: scale(1.2);
     cursor: pointer;
 }
 
 .cards img {
     width: 8.5rem;
+}
+
+/* card deck */
+.deck {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+.card-slots {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+.card-slot {
+    background-color: blue;
+    width: 136px;
+    height: 191.219px;
+}
+
+.deck-message {
+    background-color: blueviolet;
+    width: 350px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

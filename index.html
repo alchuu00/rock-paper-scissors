@@ -11,16 +11,10 @@
 </head>
 
 <body>
-  <div>Player score: </div>
-  <div>Computer score: <span class="computerScore"></span></div>
-  <div class="message"></div>
-  <div class="endGame"></div>
 
   <div class="main">
     <div class="bar-top">
-      <div class="person">
-        <div class="avatar-opponent"></div>
-        <div class="opponent-name">Evil Knight</div>
+      <div class="container">
       </div>
       <div class="cards">
         <div class="opponent-cards">
@@ -29,27 +23,36 @@
           <div><img src="/img/card_back.png"></div>
         </div>
       </div>
-      <div class="score">
-        <div class="score-bar"></div>
+      <div class="person">
+        <div class="opponent-name">Computer</div>
         <div class="score-circle"><span class="computer-score"></span></div>
+        
       </div>
+    </div>
+
+    <div class="deck">
+      <div class="card-slots">
+        <div class="card-slot"></div>
+        <div>VS</div>
+        <div class="card-slot"></div>
+      </div>
+      <div class="deck-message"></div>
+        <div class="endGame"></div>
     </div>
 
     <div class="bar-bottom">
       <div class="person">
-        <div class="avatar-player"></div>
-        <div class="player-name">Good King</div>
+        <div class="score-circle"><span class="player-score"></span></div>
+        <div class="player-name">Player</div>
       </div>
       <div class="cards">
         <div class="player-cards player-choice">
-          <div class="rock"><img class="card" src="/img/rock.png"></div>
-          <div class="paper"><img class="card" src="/img/paper.png"></div>
-          <div class="scissors"><img class="card" src="/img/scissors.png"></div>
+          <div class="rock"><img class="player-card" src="/img/rock.png"></div>
+          <div class="paper"><img class="player-card" src="/img/paper.png"></div>
+          <div class="scissors"><img class="player-card" src="/img/scissors.png"></div>
         </div>
       </div>
-      <div class="score">
-        <div class="score-bar"></div>
-        <div class="score-circle"><span class="player-score"></span></div>
+      <div class="container">
       </div>
     </div>
   </div>

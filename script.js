@@ -44,7 +44,7 @@ cardButtons.forEach(element => {
         console.log(playerSelection)
         console.log(computerSelection)
 
-        const message = document.querySelector('.message');
+        const message = document.querySelector('.deck-message');
         message.textContent = playRound(playerSelection, computerSelection);
         console.log(message)
 
