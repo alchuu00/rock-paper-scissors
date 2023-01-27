@@ -6,53 +6,32 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rock Paper Scissors</title>
+  <link href="https://fonts.googleapis.com/css2?family=Balthazar&amp;display=swap" rel="stylesheet">
   <script src="script.js" defer></script>
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-
-  <div class="main">
-    <div class="bar-top">
-      <div class="container">
-      </div>
-      <div class="cards">
-        <div class="opponent-cards">
-          <div><img src="/img/card_back.png"></div>
-          <div><img src="/img/card_back.png"></div>
-          <div><img src="/img/card_back.png"></div>
-        </div>
-      </div>
-      <div class="person">
-        <div class="opponent-name">Computer</div>
-        <div class="score-circle"><span class="computer-score"></span></div>
-        
-      </div>
+  <div class="container-main">
+    <div class="container-heading">ROCK, PAPER, SCISSORS</div>
+    <div class="container-deck">
+      <div class="score">Score:</div>
+      <div class="card-placeholder"></div>
+      <div class="vs">VS</div>
+      <div class="card-placeholder"></div>
+      <div class="score">Score:</div>
     </div>
-
-    <div class="deck">
-      <div class="card-slots">
-        <div class="card-slot"></div>
-        <div>VS</div>
-        <div class="card-slot"></div>
+    <div class="container-text"></div>
+    <div class="container-cards">
+      <div class="player-cards cards">
+        <div><img src="/img/rock.png"></div>
+        <div><img src="/img/paper.png"></div>
+        <div><img src="/img/scissors.png"></div>
       </div>
-      <div class="deck-message"></div>
-        <div class="endGame"></div>
-    </div>
-
-    <div class="bar-bottom">
-      <div class="person">
-        <div class="score-circle"><span class="player-score"></span></div>
-        <div class="player-name">Player</div>
-      </div>
-      <div class="cards">
-        <div class="player-cards player-choice">
-          <div class="rock"><img class="player-card" src="/img/rock.png"></div>
-          <div class="paper"><img class="player-card" src="/img/paper.png"></div>
-          <div class="scissors"><img class="player-card" src="/img/scissors.png"></div>
-        </div>
-      </div>
-      <div class="container">
+      <div class="computer-cards cards">
+        <div><img src="/img/Card_Back_1.png"></div>
+        <div><img src="/img/Card_Back_1.png"></div>
+        <div><img src="/img/Card_Back_1.png"></div>
       </div>
     </div>
   </div>

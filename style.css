@@ -1,136 +1,100 @@
 body {
-    background-image: url();
-    background-size: cover;
-    height: 100%;
-    overflow: hidden;
+    background-color: #4d394a;
+    color: #c9c9c9;
+    font-family: "Balthazar", "Garamond", "Trebuchet MS";
+    height: 100vh;
+    overflow: auto;
     margin: 0;
     padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.main {
-    height: 100vh;
+.container-main {
+    background-color: #3d2d3b;
+    border-radius: 20px;
+    width: 90vw;
+    height: 80vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
 }
 
-/* bar top */
-/* bar bottom */
-.bar-top,
-.bar-bottom {
+.container-heading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #160D14;
+    border-radius: 10px;
+    width: 30vw;
+    height: 7vh;
+    font-size: 30px;
+    font-weight: 900;
+}
+
+.container-deck {
     display: flex;
     flex-direction: row;
-    align-items: center;
     justify-content: center;
-    gap: 4rem;
+    align-items: center;
+    gap: 1.1rem;
+    width: 70vw;
 }
 
-.container {
-    width: 428px;
-    height: 166px;
-}
-
-.person,
 .score {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #4d394a;
+    border-radius: 10px;
+    padding: 10px 24px;
+    font-weight: 900;
+    font-size: 20px;
+}
+
+.vs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 10px;
+    padding: 0 1.5rem;
+    font-weight: 900;
+    font-size: 27px;
+}
+
+.card-placeholder {
+    width: 150px;
+    height: 200px;
+    background-color: #261C2A;
+    border-radius: 10px;
+}
+
+.container-text {
+    width: 40vw;
+    height: 60px;
+    border-radius: 10px;
+    background-color: #4d394a;
+}
+
+.container-cards {
+    width: 90vw;
+    display: flex;
     flex-direction: row;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-evenly;
 }
 
-.avatar {
-    width: 9rem;
-    height: 9rem;
-}
-
-.opponent-name,
-.player-name {
-    background-color: #f7e3ca;
-    border: .7rem solid #46300f;
-    border-radius: 20px;
-    width: 15rem;
-    height: 3rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 2rem;
-}
-
-.score-bar {
-    width: 15rem;
-    height: 4rem;
-}
-
-.score-circle {
-    width: 9rem;
-    height: 9rem;
-    border-radius: 50%;
-    border: .7rem solid #46300f;
-    background-color: #f7e3ca;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.computer-score,
-.player-score {
-    font-size: 8rem;
-}
-
-/* cards stack */
 .cards {
     display: flex;
-    justify-content: center;
-}
-
-.player-cards,
-.opponent-cards {
-    display: flex;
     gap: 1.5rem;
-}
 
-.player-card {
-    
-}
-
-.player-card:hover {
-    transform: scale(1.2);
-    cursor: pointer;
 }
 
 .cards img {
-    width: 8.5rem;
-}
-
-/* card deck */
-.deck {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
-}
-
-.card-slots {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
-}
-
-.card-slot {
-    background-color: blue;
-    width: 136px;
-    height: 191.219px;
-}
-
-.deck-message {
-    background-color: blueviolet;
-    width: 350px;
-    height: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    background-color: #261C2A;
+    max-width: 150px;
+    border-radius: 10px;
 }
