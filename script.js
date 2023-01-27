@@ -34,7 +34,7 @@ let roundsCounter = 0
 
 // start game when button is clicked
 // listen for which of buttons is clicked and make that as player choice
-const cardButtons = document.querySelectorAll('.playerChoice > button');
+const cardButtons = document.querySelectorAll('.player-choice > div');
 cardButtons.forEach(element => {
     element.addEventListener('click', function () {
 
@@ -48,10 +48,10 @@ cardButtons.forEach(element => {
         message.textContent = playRound(playerSelection, computerSelection);
         console.log(message)
 
-        const computerPoints = document.querySelector('.computerScore');
+        const computerPoints = document.querySelector('.computer-score');
         computerPoints.textContent = computerScore
 
-        const playerPoints = document.querySelector('.playerScore');
+        const playerPoints = document.querySelector('.player-score');
         playerPoints.textContent = playerScore
 
         // stop the game when one of the players scores 5 points

@@ -11,12 +11,7 @@
 </head>
 
 <body>
-  <div class="playerChoice">
-    <button class="rock">Rock</button>
-    <button class="paper">Paper</button>
-    <button class="scissors">Scissors</button>
-  </div>
-  <div>Player score: <span class="playerScore"></span></div>
+  <div>Player score: </div>
   <div>Computer score: <span class="computerScore"></span></div>
   <div class="message"></div>
   <div class="endGame"></div>
@@ -29,14 +24,14 @@
       </div>
       <div class="cards">
         <div class="opponent-cards">
-          <div><img src="/img/sheet out colored arc full.png"></div>
-          <div><img src="/img/sheet out colored arc full.png"></div>
-          <div><img src="/img/sheet out colored arc full.png"></div>
+          <div><img src="/img/card_back.png"></div>
+          <div><img src="/img/card_back.png"></div>
+          <div><img src="/img/card_back.png"></div>
         </div>
       </div>
       <div class="score">
         <div class="score-bar"></div>
-        <div class="score-circle"></div>
+        <div class="score-circle"><span class="computer-score"></span></div>
       </div>
     </div>
 
@@ -46,15 +41,15 @@
         <div class="player-name">Good King</div>
       </div>
       <div class="cards">
-        <div class="player-cards">
-          <div><img src="/img/rock.png"></div>
-          <div><img src="/img/paper.png"></div>
-          <div><img src="/img/scissors.png"></div>
+        <div class="player-cards player-choice">
+          <div class="rock"><img class="card" src="/img/rock.png"></div>
+          <div class="paper"><img class="card" src="/img/paper.png"></div>
+          <div class="scissors"><img class="card" src="/img/scissors.png"></div>
         </div>
       </div>
       <div class="score">
         <div class="score-bar"></div>
-        <div class="score-circle"></div>
+        <div class="score-circle"><span class="player-score"></span></div>
       </div>
     </div>
   </div>
