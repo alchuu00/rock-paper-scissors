@@ -79,8 +79,18 @@ cardButtons.forEach(element => {
             endGame.appendChild(restartButton)
 
             restartButton.addEventListener('click', function () {
-                // ADD RESTART FUNCTION
-            })
+                playerScore = 0;
+                computerScore = 0;
+                roundsCounter = 0;
+                endGame.textContent = '';
+                finalScore.remove();
+                restartButton.remove();
+                cardButtons.forEach(element => {
+                    element.disabled = false;
+                });
+                computerPoints.textContent = computerScore;
+                playerPoints.textContent = playerScore;
+            });
         }
     });
 });
