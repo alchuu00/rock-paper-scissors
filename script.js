@@ -20,6 +20,7 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
+// check if u need this
 function disableButtons() {
     const buttons = document.querySelectorAll('button');
     buttons.forEach(element => {
@@ -34,7 +35,7 @@ let roundsCounter = 0
 
 // start game when button is clicked
 // listen for which of buttons is clicked and make that as player choice
-const cardButtons = document.querySelectorAll('.player-choice > div');
+const cardButtons = document.querySelectorAll('.player-cards > div');
 cardButtons.forEach(element => {
     element.addEventListener('click', function () {
 
@@ -44,7 +45,7 @@ cardButtons.forEach(element => {
         console.log(playerSelection)
         console.log(computerSelection)
 
-        const message = document.querySelector('.deck-message');
+        const message = document.querySelector('.container-text');
         message.textContent = playRound(playerSelection, computerSelection);
         console.log(message)
 

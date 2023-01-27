@@ -74,10 +74,15 @@ body {
 }
 
 .container-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 40vw;
     height: 60px;
     border-radius: 10px;
     background-color: #4d394a;
+    font-size: 20px;
+    font-weight: 900;
 }
 
 .container-cards {
@@ -87,13 +92,12 @@ body {
     justify-content: space-evenly;
 }
 
-.cards {
+.player-cards, .computer-cards {
     display: flex;
     gap: 1.5rem;
-
 }
 
-.cards img {
+img {
     background-color: #261C2A;
     max-width: 150px;
     border-radius: 10px;
