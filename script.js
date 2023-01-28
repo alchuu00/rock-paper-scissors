@@ -85,6 +85,7 @@ cards.forEach(card => {
                 playerScore = null;
                 computerScore = null;
                 roundsCounter = 0;
+                message.textContent = 'Choose a card to play!'
                 cards.forEach(element => {
                     element.disabled = false;
                 });

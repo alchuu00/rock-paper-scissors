@@ -95,7 +95,6 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    cursor: pointer;
 }
 
 .player-cards,
@@ -105,10 +104,25 @@ body {
 }
 
 img {
+    position: relative;
     background-color: #261C2A;
     max-width: 150px;
     border-radius: 10px;
     box-shadow: 10px 10px 20px 5px rgba(0, 0, 0, 0.61);
+    margin-left: -9rem;
+    transition: 0.5s;
+}
+
+.player-cards {
+    cursor: pointer;
+}
+
+.player-cards:hover img {
+    margin-left: 0;
+}
+
+.player-cards img:hover {
+    transform: scale(1.05);
 }
 
 .modal-container {
