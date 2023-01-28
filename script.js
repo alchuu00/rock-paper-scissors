@@ -28,6 +28,27 @@ function disableButtons() {
     })
 }
 
+//modal function
+function modal() {
+    const modalContainer = document.getElementById('modal-container');
+    const restart = document.getElementById('restart');
+
+    modalContainer.classList.add('show');
+
+    restart.addEventListener('click', () => {
+        modalContainer.classList.remove('show');
+    })
+
+    // write the result text
+    const resultText = document.getElementById('result');
+    console.log(resultText)
+    if (playerScore === 5) {
+        resultText.textContent = 'YOU WON'
+    } else {
+        resultText.textContent = 'YOU LOSE'
+    }
+}
+
 // global variables
 let playerScore = 0
 let computerScore = 0
@@ -35,12 +56,12 @@ let roundsCounter = 0
 
 // start game when button is clicked
 // listen for which of buttons is clicked and make that as player choice
-const cardButtons = document.querySelectorAll('.player-cards > div');
-cardButtons.forEach(element => {
-    element.addEventListener('click', function () {
+const cards = document.querySelectorAll('.player-cards > div');
+cards.forEach(card => {
+    card.addEventListener('click', function () {
 
         const computerSelection = getComputerChoice();
-        const playerSelection = element.className
+        const playerSelection = card.className
 
         console.log(playerSelection)
         console.log(computerSelection)
@@ -50,43 +71,21 @@ cardButtons.forEach(element => {
         console.log(message)
 
         const computerPoints = document.querySelector('.computer-score');
-        computerPoints.textContent = computerScore
+        computerPoints.innerHTML = '&nbsp' + computerScore  //&nbsp is instead of spacebar
 
         const playerPoints = document.querySelector('.player-score');
-        playerPoints.textContent = playerScore
+        playerPoints.innerHTML = '&nbsp' + playerScore
 
         // stop the game when one of the players scores 5 points
         if (playerScore === 5 || computerScore === 5) {
-            const endGame = document.querySelector('.endGame')
-            endGame.textContent = 'GAME OVER'
-            cardButtons.forEach(element => {
-                element.disabled = true;
-            })
+            modal()
 
-            // write the result text
-            const finalScore = document.createElement('div');
-            finalScore.setAttribute('class', 'finalScore');
-            if (playerScore === 5) {
-                finalScore.textContent = 'YOU WON'
-            } else {
-                finalScore.textContent = 'YOU LOSE'
-            }
-            endGame.appendChild(finalScore)
-
-            // restart button
-            const restartButton = document.createElement('button');
-            restartButton.setAttribute('class', 'restartButton');
-            restartButton.textContent = 'RESTART'
-            endGame.appendChild(restartButton)
-
-            restartButton.addEventListener('click', function () {
-                playerScore = 0;
-                computerScore = 0;
+            // restart game
+            restart.addEventListener('click', function () {
+                playerScore = null;
+                computerScore = null;
                 roundsCounter = 0;
-                endGame.textContent = '';
-                finalScore.remove();
-                restartButton.remove();
-                cardButtons.forEach(element => {
+                cards.forEach(element => {
                     element.disabled = false;
                 });
                 computerPoints.textContent = computerScore;
