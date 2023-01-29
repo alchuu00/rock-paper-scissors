@@ -1,3 +1,15 @@
+// global variables
+let playerScore = 0
+let computerScore = 0
+let roundsCounter = 0
+const message = document.querySelector('.container-text');
+const modalContainer = document.getElementById('modal-container');
+const computerPoints = document.querySelector('.computer-score');
+const playerPoints = document.querySelector('.player-score');
+const containerCards = document.querySelector('.container-cards');
+const cardsPlayer = document.querySelectorAll('.player-cards > div');
+const cardsComputer = document.querySelectorAll('.computer-cards > div')
+
 // get random computer move
 function getComputerChoice() {
     const moves = ["rock", "paper", "scissors"];
@@ -5,27 +17,33 @@ function getComputerChoice() {
     return computerChoice;
 }
 
-// compare computer and player moves and return result
-function playRound(playerSelection, computerSelection) {
-    if ((playerSelection === "rock" && computerSelection === "rock") || (playerSelection === "paper" && computerSelection === "paper") || (playerSelection === "scissors" && computerSelection === "scissors")) {
-        return "It's a Tie!";
-    }
-    else if ((playerSelection === "rock" && computerSelection === "paper") || (playerSelection === "paper" && computerSelection === "scissors") || (playerSelection === "scissors" && computerSelection === "rock")) {
-        computerScore++;
-        return "You lose";
-    }
-    else if ((playerSelection === "rock" && computerSelection === "scissors") || (playerSelection === "paper" && computerSelection === "rock") || (playerSelection === "scissors" && computerSelection === "paper")) {
-        playerScore++;
-        return "You win";
-    }
-}
+// get player card
+function getPlayerChoice() {
+    cardsPlayer.forEach(card => {
+        card.addEventListener('click', function () {
+            const playerSelection = card.getAttribute('id'); // listen for which of buttons is clicked and make that as player choice
+        });
+    });
+};
 
-// check if u need this
-function disableButtons() {
-    const buttons = document.querySelectorAll('button');
-    buttons.forEach(element => {
-        element.disabled = true
-    })
+// compare computer and player moves and return result
+function compareCards(playerSelection, computerSelection) {
+    switch (playerSelection + "," + computerSelection) {
+        case "rock,rock":
+        case "paper,paper":
+        case "scissors,scissor":
+            return "It's a Tie!";
+        case "rock,paper":
+        case "paper,scissors":
+        case "scissors,rock":
+            computerScore++;
+            return "You lose";
+        case "rock,scissors":
+        case "paper,rock":
+        case "scissors,paper":
+            playerScore++;
+            return "You win";
+    }
 }
 
 //modal function
@@ -35,9 +53,7 @@ function modal() {
 
     modalContainer.classList.add('show');
 
-    restart.addEventListener('click', () => {
-        modalContainer.classList.remove('show');
-    })
+    restart.addEventListener('click', resetGame);
 
     // write the result text
     const resultText = document.getElementById('result');
@@ -49,50 +65,102 @@ function modal() {
     }
 }
 
-// global variables
-let playerScore = 0
-let computerScore = 0
-let roundsCounter = 0
+// display score
+function displayScore() {
+    computerPoints.innerHTML = '&nbsp' + computerScore  //&nbsp is instead of spacebar
+    playerPoints.innerHTML = '&nbsp' + playerScore
+}
+
+// restart the game
+function resetGame() {
+    modalContainer.classList.remove('show');
+    playerScore = 0;
+    computerScore = 0;
+    roundsCounter = 0;
+    message.textContent = 'Choose a card to play!'
+    cardsPlayer.forEach(element => {
+        element.disabled = false;
+    });
+    computerPoints.textContent = computerScore;
+    playerPoints.textContent = playerScore;
+}
+
+// player card fly to middle
+function playerCardFlyToMiddle(playerSelection) {
+    const playerStack = document.querySelector('.player-cards');
+    const playerCard = document.querySelector(`#${playerSelection}`);
+    playerCard.classList.add('fly-to-middle-player');
+    playerStack.classList.add('no-hover');
+    containerCards.classList.add('no-hover');
+
+    setTimeout(() => {
+        playerCard.classList.remove('fly-to-middle-player');
+        playerCard.classList.add('fly-from-middle-player');
+    }, 3000);
+
+    setTimeout(() => {
+        playerCard.classList.remove('fly-from-middle-player');
+        playerStack.classList.remove('no-hover');
+        containerCards.classList.remove('no-hover');
+    }, 4000);
+}
+
+// computer card fly to middle
+function computerCardFlyToMiddle(computerSelection) {
+    const computerStack = document.querySelector('.computer-cards');
+    const computerCard = document.querySelector(`.computer-cards > #${computerSelection}`);
+    computerCard.classList.add('fly-to-middle-computer');
+    computerStack.classList.add('no-hover');
+    containerCards.classList.add('no-hover');
+
+    setTimeout(() => {
+        computerCard.classList.remove('fly-to-middle-computer');
+        computerCard.classList.add('fly-from-middle-computer');
+    }, 3000);
+
+    // computerCard.classList.add('flip');
+
+    setTimeout(() => {
+        computerCard.classList.remove('fly-from-middle-computer');
+        computerCard.classList.remove('flip');
+        computerStack.classList.remove('no-hover');
+        containerCards.classList.remove('no-hover');
+    }, 4000);
+}
+
+
+// GAME
+function game() {
+    cardsPlayer.forEach(cardPlayer => {
+        cardPlayer.addEventListener('click', function () {
+
+            // get player and computer move
+            const computerSelection = getComputerChoice();
+            const playerSelection = cardPlayer.getAttribute('id'); // listen for which of buttons is clicked and make that as player choice
+
+            console.log(playerSelection)
+            console.log(computerSelection)
+
+            playerCardFlyToMiddle(playerSelection)
+            computerCardFlyToMiddle(computerSelection)
+
+            setTimeout(() => {
+                const messageRound = document.querySelector('.container-text');
+                messageRound.textContent = compareCards(playerSelection, computerSelection);
+                console.log(message)
+
+                displayScore()
+            }, 2000)
+
+
+            // stop the game when one of the players scores 5 points
+            if (playerScore === 5 || computerScore === 5) {
+                modal()
+            }
+        });
+    });
+}
 
 // start game when button is clicked
-// listen for which of buttons is clicked and make that as player choice
-const cards = document.querySelectorAll('.player-cards > div');
-cards.forEach(card => {
-    card.addEventListener('click', function () {
-
-        const computerSelection = getComputerChoice();
-        const playerSelection = card.className
-
-        console.log(playerSelection)
-        console.log(computerSelection)
-
-        const message = document.querySelector('.container-text');
-        message.textContent = playRound(playerSelection, computerSelection);
-        console.log(message)
-
-        const computerPoints = document.querySelector('.computer-score');
-        computerPoints.innerHTML = '&nbsp' + computerScore  //&nbsp is instead of spacebar
-
-        const playerPoints = document.querySelector('.player-score');
-        playerPoints.innerHTML = '&nbsp' + playerScore
-
-        // stop the game when one of the players scores 5 points
-        if (playerScore === 5 || computerScore === 5) {
-            modal()
-
-            // restart game
-            restart.addEventListener('click', function () {
-                playerScore = null;
-                computerScore = null;
-                roundsCounter = 0;
-                message.textContent = 'Choose a card to play!'
-                cards.forEach(element => {
-                    element.disabled = false;
-                });
-                computerPoints.textContent = computerScore;
-                playerPoints.textContent = playerScore;
-            });
-        }
-    });
-});
+game()
 

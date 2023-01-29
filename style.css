@@ -18,8 +18,8 @@ body {
 .container-main {
     background-color: #3d2d3b;
     border-radius: 20px;
-    width: 90vw;
-    height: 80vh;
+    width: 1200px;
+    height: 700px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -32,10 +32,12 @@ body {
     align-items: center;
     background-color: #160D14;
     border-radius: 10px;
-    width: 30vw;
-    height: 7vh;
+    width: 500px;
+    height: 50px;
     font-size: 30px;
     font-weight: 900;
+    margin-top: 20px;
+
 }
 
 .container-deck {
@@ -43,8 +45,9 @@ body {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 1.1rem;
-    width: 70vw;
+    gap: 10px;
+    width: 1000px;
+    height: 230px;
 }
 
 .score {
@@ -66,7 +69,7 @@ body {
     align-items: center;
     text-align: center;
     border-radius: 10px;
-    padding: 0 1.5rem;
+    padding: 0 20px;
     font-weight: 900;
     font-size: 27px;
 }
@@ -82,16 +85,18 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 40vw;
+    width: 1000px;
     height: 60px;
     border-radius: 10px;
     background-color: #4d394a;
     font-size: 20px;
     font-weight: 900;
+    margin-bottom: 40px;
 }
 
 .container-cards {
-    width: 90vw;
+    width: 1400px;
+    height: 250px;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -100,7 +105,7 @@ body {
 .player-cards,
 .computer-cards {
     display: flex;
-    gap: 1.5rem;
+    gap: 15px;
 }
 
 img {
@@ -109,20 +114,118 @@ img {
     max-width: 150px;
     border-radius: 10px;
     box-shadow: 10px 10px 20px 5px rgba(0, 0, 0, 0.61);
-    margin-left: -9rem;
     transition: 0.5s;
 }
 
-.player-cards {
+.cards>div {
+    transition: 0.5s;
+    margin-left: -130px;
+}
+
+.container-cards:hover div {
+    margin-left: 10px;
     cursor: pointer;
 }
 
-.player-cards:hover img {
-    margin-left: 0;
+.player-cards div:hover {
+    transform: scale(1.05);
 }
 
-.player-cards img:hover {
-    transform: scale(1.05);
+.player-cards .fly-to-middle-player {
+    position: absolute;
+    animation: flyToMiddlePlayer 0.4s forwards;
+}
+
+.player-cards .fly-from-middle-player {
+    animation: flyFromMiddlePlayer 1s forwards;
+}
+
+@keyframes flyToMiddlePlayer {
+    from {
+        transform: translateX(0) translateY(0);
+    }
+
+    to {
+        transform: translateX(210px) translateY(-348px);
+    }
+}
+
+@keyframes flyFromMiddlePlayer {
+    from {
+        transform: translateX(210px) translateY(-348px);
+    }
+
+    to {
+        transform: translateX(0) translateY(0);
+    }
+}
+
+.computer-cards .fly-to-middle-computer {
+    position: absolute;
+    animation: flyToMiddleComputer 4s forwards;
+}
+
+.computer-cards .fly-from-middle-computer {
+    animation: flyFromMiddleComputer 1s forwards;
+}
+
+@keyframes flyToMiddleComputer {
+    from {
+        transform: translateX(0) translateY(0);
+    }
+
+    10% {
+        transform: translateX(-50px) translateY(-348px) rotateY(0deg);
+        ;
+    }
+
+    25% {
+        transform: translateX(-50px) translateY(-348px) rotateY(180deg);
+        ;
+    }
+
+    60% {
+        transform: translateX(-50px) translateY(-348px) rotateY(180deg);
+        ;
+    }
+
+    80% {
+        transform: translateX(-50px) translateY(-348px) rotateY(0deg);
+        ;
+    }
+
+    to {
+        transform: translateX(-50px) translateY(-348px);
+    }
+}
+
+@keyframes flyFromMiddleComputer {
+    from {
+        transform: translateX(-50px) translateY(-348px);
+    }
+
+    to {
+        transform: translateX(0) translateY(0);
+    }
+}
+
+.no-hover {
+    pointer-events: none;
+}
+
+.flip {
+    animation: flip 1s;
+}
+
+@keyframes flip {
+    0% {
+        transform: rotateY(0deg);
+    }
+
+    100% {
+        transform: rotateY(180deg);
+
+    }
 }
 
 .modal-container {
