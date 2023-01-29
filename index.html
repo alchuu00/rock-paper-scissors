@@ -1,12 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Rock Paper Scissors</title>
+  <link href="https://fonts.googleapis.com/css2?family=Balthazar&amp;display=swap" rel="stylesheet">
+  <script src="script.js" defer></script>
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <script src="script.js"></script>
+  <div class="container-main">
+    <div class="container-heading">ROCK, PAPER, SCISSORS</div>
+    <div class="container-deck">
+      <div class="score">Score:<span class="player-score"></span></div>
+      <div class="card-placeholder"></div>
+      <div class="vs">VS</div>
+      <div class="card-placeholder"></div>
+      <div class="score">Score:<span class="computer-score"></span></div>
+    </div>
+    <div class="container-text">Choose a card to play!</div>
+    <div class="container-cards">
+      <div class="player-cards cards">
+        <div id="rock"><img src="/img/rock.png"></div>
+        <div id="paper"><img src="/img/paper.png"></div>
+        <div id="scissors"><img src="/img/scissors.png"></div>
+      </div>
+      <div class="computer-cards cards">
+        <div id="rock" class="card">
+          <div class="front"><img src="/img/Card_Back_1.png"></div>
+          <div class="back"><img src="/img/rock.png"></div>
+        </div>
+        <div id="paper" class="card">
+          <div class="front"><img src="/img/Card_Back_1.png"></div>
+          <div class="back"><img src="/img/paper.png"></div>
+        </div>
+        <div id="scissors" class="card">
+          <div class="front"><img src="/img/Card_Back_1.png"></div>
+          <div class="back"><img src="/img/scissors.png"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-container" id="modal-container">
+      <div class="modal">
+        <h2>GAME OVER</h2>
+        <p id="result"></p>
+        <div id="restart">TRY AGAIN</div>
+      </div>
+    </div>
+
+    <audio id="clickAudio" src="/sounds/click-21156.mp3"></audio>
+    <audio id="winAudio" src="/sounds/win-6297.mp3"></audio>
+    <audio id="loseAudio" src="/sounds/lost-126514.mp3"></audio>
 </body>
+
 </html>
