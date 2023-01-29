@@ -1,7 +1,6 @@
 // global variables
 let playerScore = 0
 let computerScore = 0
-let roundsCounter = 0
 const message = document.querySelector('.container-text');
 const modalContainer = document.getElementById('modal-container');
 const computerPoints = document.querySelector('.computer-score');
@@ -31,18 +30,18 @@ function compareCards(playerSelection, computerSelection) {
     switch (playerSelection + "," + computerSelection) {
         case "rock,rock":
         case "paper,paper":
-        case "scissors,scissor":
+        case "scissors,scissors":
             return "It's a Tie!";
         case "rock,paper":
         case "paper,scissors":
         case "scissors,rock":
             computerScore++;
-            return "You lose";
+            return "You lost the round!";
         case "rock,scissors":
         case "paper,rock":
         case "scissors,paper":
             playerScore++;
-            return "You win";
+            return "You won the round!";
     }
 }
 
@@ -61,7 +60,7 @@ function modal() {
     if (playerScore === 5) {
         resultText.textContent = 'YOU WON'
     } else {
-        resultText.textContent = 'YOU LOSE'
+        resultText.textContent = 'YOU LOST'
     }
 }
 
@@ -69,6 +68,11 @@ function modal() {
 function displayScore() {
     computerPoints.innerHTML = '&nbsp' + computerScore  //&nbsp is instead of spacebar
     playerPoints.innerHTML = '&nbsp' + playerScore
+
+    // stop the game when one of the players scores 5 points
+    if (playerScore === 5 || computerScore === 5) {
+        modal()
+    }
 }
 
 // restart the game
@@ -76,7 +80,6 @@ function resetGame() {
     modalContainer.classList.remove('show');
     playerScore = 0;
     computerScore = 0;
-    roundsCounter = 0;
     message.textContent = 'Choose a card to play!'
     cardsPlayer.forEach(element => {
         element.disabled = false;
@@ -130,16 +133,13 @@ function computerCardFlyToMiddle(computerSelection) {
 
 
 // GAME
-function game() {
+function game(playerScore, computerScore) {
     cardsPlayer.forEach(cardPlayer => {
         cardPlayer.addEventListener('click', function () {
 
             // get player and computer move
             const computerSelection = getComputerChoice();
             const playerSelection = cardPlayer.getAttribute('id'); // listen for which of buttons is clicked and make that as player choice
-
-            console.log(playerSelection)
-            console.log(computerSelection)
 
             playerCardFlyToMiddle(playerSelection)
             computerCardFlyToMiddle(computerSelection)
@@ -151,12 +151,6 @@ function game() {
 
                 displayScore()
             }, 1000)
-
-
-            // stop the game when one of the players scores 5 points
-            if (playerScore === 5 || computerScore === 5) {
-                modal()
-            }
         });
     });
 }
