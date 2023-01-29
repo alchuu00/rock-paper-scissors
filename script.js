@@ -150,7 +150,7 @@ function game() {
                 console.log(message)
 
                 displayScore()
-            }, 2000)
+            }, 1000)
 
 
             // stop the game when one of the players scores 5 points
