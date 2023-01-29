@@ -8,6 +8,9 @@ const playerPoints = document.querySelector('.player-score');
 const containerCards = document.querySelector('.container-cards');
 const cardsPlayer = document.querySelectorAll('.player-cards > div');
 const cardsComputer = document.querySelectorAll('.computer-cards > div')
+const clickAudio = document.getElementById('clickAudio')
+const winAudio = document.getElementById('winAudio')
+const loseAudio = document.getElementById('loseAudio')
 
 // get random computer move
 function getComputerChoice() {
@@ -35,12 +38,12 @@ function compareCards(playerSelection, computerSelection) {
         case "rock,paper":
         case "paper,scissors":
         case "scissors,rock":
-            computerScore++;
+            computerScore++; loseAudio.play();
             return "You lost the round!";
         case "rock,scissors":
         case "paper,rock":
         case "scissors,paper":
-            playerScore++;
+            playerScore++; winAudio.play();
             return "You won the round!";
     }
 }
@@ -49,6 +52,10 @@ function compareCards(playerSelection, computerSelection) {
 function modal() {
     const modalContainer = document.getElementById('modal-container');
     const restart = document.getElementById('restart');
+
+    restart.addEventListener('click', () => {
+        clickAudio.play()
+    })
 
     modalContainer.classList.add('show');
 
@@ -59,8 +66,10 @@ function modal() {
     console.log(resultText)
     if (playerScore === 5) {
         resultText.textContent = 'YOU WON'
+        winAudio.play();
     } else {
         resultText.textContent = 'YOU LOST'
+        loseAudio.play();
     }
 }
 
@@ -125,7 +134,6 @@ function computerCardFlyToMiddle(computerSelection) {
 
     setTimeout(() => {
         computerCard.classList.remove('fly-from-middle-computer');
-        computerCard.classList.remove('flip');
         computerStack.classList.remove('no-hover');
         containerCards.classList.remove('no-hover');
     }, 4000);
@@ -136,6 +144,9 @@ function computerCardFlyToMiddle(computerSelection) {
 function game(playerScore, computerScore) {
     cardsPlayer.forEach(cardPlayer => {
         cardPlayer.addEventListener('click', function () {
+
+            // play sound on click
+            clickAudio.play()
 
             // get player and computer move
             const computerSelection = getComputerChoice();
