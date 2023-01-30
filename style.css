@@ -152,13 +152,13 @@ img {
     }
 
     to {
-        transform: translateX(198px) translateY(-343px);
+        transform: translateX(198px) translateY(-323px);
     }
 }
 
 @keyframes flyFromMiddlePlayer {
     from {
-        transform: translateX(198px) translateY(-343px);
+        transform: translateX(198px) translateY(-323px);
     }
 
     to {
@@ -181,33 +181,33 @@ img {
     }
 
     10% {
-        transform: translateX(-198px) translateY(-343px) rotateY(0deg);
+        transform: translateX(-198px) translateY(-323px) rotateY(0deg);
         ;
     }
 
     25% {
-        transform: translateX(-198px) translateY(-343px) rotateY(180deg);
+        transform: translateX(-198px) translateY(-323px) rotateY(180deg);
         ;
     }
 
     60% {
-        transform: translateX(-198px) translateY(-343px) rotateY(180deg);
+        transform: translateX(-198px) translateY(-323px) rotateY(180deg);
         ;
     }
 
     80% {
-        transform: translateX(-198px) translateY(-343px) rotateY(0deg);
+        transform: translateX(-198px) translateY(-323px) rotateY(0deg);
         ;
     }
 
     to {
-        transform: translateX(-198px) translateY(-343px);
+        transform: translateX(-198px) translateY(-323px);
     }
 }
 
 @keyframes flyFromMiddleComputer {
     from {
-        transform: translateX(-50px) translateY(-348px);
+        transform: translateX(-198px) translateY(-323px);
     }
 
     to {
@@ -294,3 +294,22 @@ img {
     width: 150px;
     cursor: pointer;
 }
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #160D14;
+    font-weight: 900;
+  }
+
+svg {
+    height: 30px;
+    width: 30px;
+    transition: transform 0.3s ease-in-out;
+    box-shadow:none;
+  }
+
+ svg:hover {
+    transform: rotate(360deg);
+  }
